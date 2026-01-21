@@ -10,7 +10,7 @@ rilevazioni = 1
 temperature_rilevate = []
 umidita_rilevate = []
 
-# Carica parametri dal file di configurazione
+#Carica parametri dal file di configurazione
 def carica_parametri():
     try:
         with open('configurazione/parametri.conf') as file:
@@ -43,7 +43,7 @@ def crea_dato(temperatura, umidita, num_cabine, num_ponti):
     rilevazioni += 1
     return dato
 
-# Salva il dato sul file
+#Salva il dato sul file
 def salva_dato(dato):
     try:
         with open('dati/iotdata.dbt', 'a') as file:
@@ -54,20 +54,20 @@ def salva_dato(dato):
         print("Errore nella scrittura del file")
         return False
 
-# Esegue una singola rilevazione
+#Esegue una singola rilevazione
 def esegui_rilevazione(parametri):
-    # Leggi sensori
+    #Leggi sensori
     temp = misurazione.on_temperatura(parametri["NUMERO_DECIMALI"])
     umid = misurazione.on_umidita(parametri["NUMERO_DECIMALI"])
     
-    # Salva per calcolare medie
+    #Salva per calcolare medie
     temperature_rilevate.append(temp)
     umidita_rilevate.append(umid)
     
-    # Crea dato
+    #Crea dato
     dato = crea_dato(temp, umid, parametri["NUMERO_CABINE"], parametri["NUMERO_PONTI"])
     
-    # Stampa con indentazione
+    #Stampa con indentazione
     print(json.dumps(dato, indent=4))
     print()  # Riga vuota per separare
     
@@ -89,7 +89,7 @@ def mostra_statistiche(parametri):
         print(f"Umidità media: {umid_media}%")
     print("="*50)
 
-# Funzione principale
+#Funzione principale
 def main():
     print("AVVIO SIMULAZIONE IoT")
     
@@ -99,7 +99,7 @@ def main():
         print("Impossibile avviare il programma")
         return
     
-    # Ciclo principale
+    #Ciclo principale
     try:
         while True:
             esegui_rilevazione(parametri)
@@ -114,4 +114,5 @@ def main():
 
 # Avvio programma
 if __name__ == "__main__":
+
     main()
