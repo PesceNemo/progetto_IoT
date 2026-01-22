@@ -85,8 +85,6 @@ def mostra_statistiche(parametri):
         
         print(f"Temperatura media: {temp_media}°C")
         print(f"Umidità media: {umid_media}%")
-    print("="*50)
-
 #Funzione principale
 def main():
     print("AVVIO SIMULAZIONE IoT")
@@ -114,4 +112,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
