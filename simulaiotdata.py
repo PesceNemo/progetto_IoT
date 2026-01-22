@@ -76,9 +76,7 @@ def esegui_rilevazione(parametri):
 
 # Mostra statistiche finali
 def mostra_statistiche(parametri):
-    print("\n" + "="*50)
     print("STATISTICHE FINALI")
-    print("="*50)
     print(f"Numero di rilevazioni effettuate: {rilevazioni - 1}")
     
     if temperature_rilevate:
@@ -116,3 +114,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
