@@ -46,7 +46,7 @@ def crea_dato(temperatura, umidita, num_cabine, num_ponti):
 #Salva il dato sul file
 def salva_dato(dato):
     try:
-        with open('dati/iotdata.dbt', 'a') as file:
+        with open('IOTP/iotdata.dbt', 'a') as file:
             json.dump(dato, file, indent=4)
             file.write("\n")
         return True
@@ -114,3 +114,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
