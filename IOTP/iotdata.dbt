@@ -1,128 +1,27 @@
-{
-    "cabina": 83,
-    "ponte": 3,
-    "rilevazione": 1,
-    "dataeora": 1769012897.4868703,
-    "temperatura": 10.23,
-    "umidita": 84.59
-}
-{
-    "cabina": 81,
-    "ponte": 3,
-    "rilevazione": 2,
-    "dataeora": 1769012902.4890587,
-    "temperatura": 17.65,
-    "umidita": 25.62
-}
-{
-    "cabina": 83,
-    "ponte": 3,
-    "rilevazione": 3,
-    "dataeora": 1769012907.4915087,
-    "temperatura": 10.7,
-    "umidita": 84.08
-}
-{
-    "cabina": 19,
-    "ponte": 2,
-    "rilevazione": 4,
-    "dataeora": 1769012912.4972692,
-    "temperatura": 18.05,
-    "umidita": 23.17
-}
-{
-    "cabina": 27,
-    "ponte": 1,
-    "rilevazione": 5,
-    "dataeora": 1769012917.5019364,
-    "temperatura": 22.11,
-    "umidita": 80.62
-}
-{
-    "cabina": 43,
-    "ponte": 1,
-    "rilevazione": 6,
-    "dataeora": 1769012922.5117388,
-    "temperatura": 36.31,
-    "umidita": 84.96
-}
-{
-    "cabina": 10,
-    "ponte": 2,
-    "rilevazione": 7,
-    "dataeora": 1769012927.5137885,
-    "temperatura": 30.13,
-    "umidita": 71.98
-}
-{
-    "cabina": 16,
-    "ponte": 2,
-    "rilevazione": 8,
-    "dataeora": 1769012932.5165782,
-    "temperatura": 32.97,
-    "umidita": 55.38
-}
-{
-    "cabina": 69,
-    "ponte": 3,
-    "rilevazione": 9,
-    "dataeora": 1769012937.518816,
-    "temperatura": 13.26,
-    "umidita": 65.12
-}
-{
-    "cabina": 47,
-    "ponte": 3,
-    "rilevazione": 10,
-    "dataeora": 1769012942.520921,
-    "temperatura": 34.53,
-    "umidita": 65.75
-}
-{
-    "cabina": 27,
-    "ponte": 2,
-    "rilevazione": 11,
-    "dataeora": 1769012947.5239196,
-    "temperatura": 28.5,
-    "umidita": 62.96
-}
-{
-    "cabina": 71,
-    "ponte": 2,
-    "rilevazione": 12,
-    "dataeora": 1769012952.526126,
-    "temperatura": 39.0,
-    "umidita": 54.32
-}
-{
-    "cabina": 14,
-    "ponte": 3,
-    "rilevazione": 13,
-    "dataeora": 1769012957.5286736,
-    "temperatura": 26.27,
-    "umidita": 25.34
-}
-{
-    "cabina": 98,
-    "ponte": 1,
-    "rilevazione": 14,
-    "dataeora": 1769012962.5314863,
-    "temperatura": 23.33,
-    "umidita": 33.46
-}
-{
-    "cabina": 51,
-    "ponte": 2,
-    "rilevazione": 15,
-    "dataeora": 1769012967.533664,
-    "temperatura": 24.27,
-    "umidita": 53.35
-}
-{
-    "cabina": 6,
-    "ponte": 1,
-    "rilevazione": 16,
-    "dataeora": 1769012972.5361934,
-    "temperatura": 31.81,
-    "umidita": 71.08
-}
+{"invio_numero": 1, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807597.225604, "media_temperatura": 28.25, "media_umidita": 63.92, "dc": "DC100-03"}
+{"invio_numero": 2, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807602.2283368, "media_temperatura": 37.69, "media_umidita": 82.89, "dc": "DC100-03"}
+{"invio_numero": 3, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807607.232876, "media_temperatura": 30.74, "media_umidita": 41.48, "dc": "DC100-03"}
+{"invio_numero": 4, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807612.236557, "media_temperatura": 30.17, "media_umidita": 38.03, "dc": "DC100-03"}
+{"invio_numero": 5, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807617.2384481, "media_temperatura": 24.19, "media_umidita": 50.14, "dc": "DC100-03"}
+{"invio_numero": 1, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807651.426816, "media_temperatura": 16.33, "media_umidita": 60.74, "dc": "DC100-03"}
+{"invio_numero": 2, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807656.4302201, "media_temperatura": 37.46, "media_umidita": 51.5, "dc": "DC100-03"}
+{"invio_numero": 3, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807661.431962, "media_temperatura": 36.03, "media_umidita": 65.52, "dc": "DC100-03"}
+{"invio_numero": 4, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807666.437833, "media_temperatura": 37.82, "media_umidita": 41.69, "dc": "DC100-03"}
+{"invio_numero": 5, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807671.4423978, "media_temperatura": 38.39, "media_umidita": 48.69, "dc": "DC100-03"}
+{"invio_numero": 6, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807676.4435709, "media_temperatura": 24.53, "media_umidita": 56.28, "dc": "DC100-03"}
+{"invio_numero": 7, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807681.448382, "media_temperatura": 39.27, "media_umidita": 70.58, "dc": "DC100-03"}
+{"invio_numero": 8, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807686.4518871, "media_temperatura": 32.88, "media_umidita": 81.45, "dc": "DC100-03"}
+{"invio_numero": 9, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807691.459659, "media_temperatura": 27.09, "media_umidita": 24.31, "dc": "DC100-03"}
+{"invio_numero": 10, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807696.4611032, "media_temperatura": 38.39, "media_umidita": 24.84, "dc": "DC100-03"}
+{"invio_numero": 11, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807701.465742, "media_temperatura": 20.22, "media_umidita": 56.7, "dc": "DC100-03"}
+{"invio_numero": 12, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807706.466623, "media_temperatura": 38.93, "media_umidita": 62.38, "dc": "DC100-03"}
+{"invio_numero": 13, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807711.4742458, "media_temperatura": 33.51, "media_umidita": 27.45, "dc": "DC100-03"}
+{"invio_numero": 14, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807716.478085, "media_temperatura": 33.59, "media_umidita": 39.06, "dc": "DC100-03"}
+{"invio_numero": 15, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807721.4793339, "media_temperatura": 36.08, "media_umidita": 31.8, "dc": "DC100-03"}
+{"invio_numero": 16, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807726.480223, "media_temperatura": 10.2, "media_umidita": 26.19, "dc": "DC100-03"}
+{"invio_numero": 17, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807731.483745, "media_temperatura": 17.9, "media_umidita": 76.83, "dc": "DC100-03"}
+{"invio_numero": 18, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807736.487742, "media_temperatura": 37.67, "media_umidita": 36.54, "dc": "DC100-03"}
+{"invio_numero": 19, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807741.511005, "media_temperatura": 11.27, "media_umidita": 61.53, "dc": "DC100-03"}
+{"invio_numero": 20, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807746.516901, "media_temperatura": 30.29, "media_umidita": 78.75, "dc": "DC100-03"}
+{"invio_numero": 21, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807751.520343, "media_temperatura": 30.56, "media_umidita": 41.17, "dc": "DC100-03"}
+{"invio_numero": 22, "identita_giot": "GIOT-001", "cabina": 100, "ponte": 3, "data_ora": 1769807756.524179, "media_temperatura": 18.26, "media_umidita": 25.18, "dc": "DC100-03"}
