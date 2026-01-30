@@ -54,16 +54,8 @@ def main():
             rilevazione += 1
             
             # Leggi sensori
-            temperatura = misurazione.on_temperatura(
-                config["sensore"]["tmin"],
-                config["sensore"]["tmax"],
-                config["sensore"]["erroret"]
-            )
-            umidita = misurazione.on_umidita(
-                config["sensore"]["umin"],
-                config["sensore"]["umax"],
-                config["sensore"]["erroreu"]
-            )
+            temperatura = misurazione.on_temperatura(2)
+            umidita = misurazione.on_umidita(2)
             
             # Crea e invia dato
             dato_iot = crea_dato_iot(config, rilevazione, temperatura, umidita)
