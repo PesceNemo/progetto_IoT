@@ -2,7 +2,7 @@ import misurazione
 import time
 import json
 import socket
-import cripto
+import DA.cripto
 
 def carica_config(nome_file):
     """Carica i parametri dal file di configurazione JSON"""
@@ -77,4 +77,5 @@ def main():
         print("Client terminato")
 
 if __name__ == "__main__":
+
     main()
