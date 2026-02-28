@@ -1,22 +1,17 @@
-# Simulazione
-# Sensore di temperatura e umidità
+# Gestione sensore temperatura e umidità
+# Raspberry Pico WH
+# Utilizzo libreria dht
 #
-# Script misurazione.py
-# Parametro ingresso da main: N numero di decimali arrotondamento
-#
-# Simulazione sensore temperatura, da 10 a 40 gradi
-# cifre decimali pari a N
-#
-import random   # Generazione numeri casuali
+import dht
 #
 # Funzioni
 #
-def on_temperatura(N):
-    TEMP = round(random.uniform(10,40), N)
-    return TEMP
-# Simulazione sensore umidità, da 20 a 90 gradi
-# cifre decimali pari a N
-def on_umidita(N):
-    UMID = round(random.uniform(20,90), N)
-    return UMID
-#
+def lettura_sensore(sensor):
+    try:
+        sensor.measure()
+        temp = sensor.temperature()
+        hum = sensor.humidity()
+    except OSError as e:
+        raise e
+
+    return temp, hum
