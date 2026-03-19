@@ -1,0 +1,31 @@
+{
+    "sistema": [
+        {
+            "cabina": 1,
+            "ponte": 1,
+            "temperaturam": 19.12,
+            "umiditam": 64.20,
+            "dataeora": 1727283213,
+            "invionumero": 1,
+            "identita": "GIOT-001"
+        },
+        {
+            "cabina": 2,
+            "ponte": 1,
+            "temperaturam": 19.00,
+            "umiditam": 64.20,
+            "dataeora": 1727283223,
+            "invionumero": 2,
+            "identita": "GIOT-001"
+        },
+        {
+            "cabina": 12,
+            "ponte": 1,
+            "temperaturam": 18.30,
+            "umiditam": 62.20,
+            "dataeora": 1727284444,
+            "invionumero": 1,
+            "identita": "GIOT-002"
+        }
+    ]
+}
