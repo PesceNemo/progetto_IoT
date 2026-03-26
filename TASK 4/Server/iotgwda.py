@@ -4,6 +4,7 @@ import time #per la gestione del tempo
 import json #per gestire i file json
 import cripto #per la gestione della crittografia
 import threading #per la gestione dei thread
+import paho.mqtt.client as mqtt #per la gestione del protocollo MQTT
 
 #leggo i parametri presenti nel file: parametri.json
 with open("configurazione/parametri.json", "r") as file:
@@ -14,6 +15,15 @@ TEMPO_INVIO = parametri["TEMPO_INVIO"]
 NUMERO_DECIMALI = parametri["NUMERO_DECIMALI"]
 IP_SERVER = parametri["IP_SERVER"]
 PORTA_SERVER = parametri["PORTA_SERVER"]
+TOPIC = parametri["TOPIC"]               
+BROKER = parametri["BROKER"]            
+PORTA_BROKER = parametri["PORTA_BROKER"] 
+
+# --- NUOVO: Configurazione e connessione MQTT ---
+client_mqtt = mqtt.Client()
+client_mqtt.connect(BROKER, PORTA_BROKER)
+client_mqtt.loop_start() # avvia il loop in background per MQTT
+# ------------------------------------------------
 
 #funzione per gestire la connessione con il client 
 def gestione_client(client, indirizzo):
@@ -29,6 +39,9 @@ def gestione_client(client, indirizzo):
     try:
         #finchè la connessione è attiva, ricevo dati
         while True:
+            # --- DEBUG RICHIESTO DAL PROGETTO ---
+            print("Gateway IoT in attesa di dati") 
+            
             #ricevo i dati dal client
             dato = client.recv(1024).decode()
             #se la connessione viene chiusa, esco dal ciclo
@@ -58,7 +71,7 @@ def gestione_client(client, indirizzo):
                 #creo il dizionario da inviare alla platform
                 dato_iot = {
                     "invio_numero": invio_numero,
-                    "identita_giot": parametri["ID_GIOT"],
+                    "identita_giot": parametri.get("IDENTITA_GIOT", parametri.get("ID_GIOT")),
                     "cabina": dato["cabina"],
                     "ponte": dato["ponte"],
                     "data_ora": rilevazione_data_ora,
@@ -67,25 +80,27 @@ def gestione_client(client, indirizzo):
                     "dc": dato["identita"],
                 }
 
-                #salvataggio nel file iotdata.dvt
-                with open("iotp/db.json", "a") as file:
-                    file.write(json.dumps(dato_iot) + "\n")
-
                 #crittografia del dato
                 dato_json = json.dumps(dato_iot)
                 dato_cripto = cripto.criptazione(dato_json)
+
+                # --- NUOVO: Invio del dato tramite MQTT (Publish) ---
+                client_mqtt.publish(TOPIC, dato_cripto, 0)
+                
+                # --- DEBUG RICHIESTO DAL PROGETTO ---
+                print("Gateway IoT in ricezione e invio")
+                # ----------------------------------------------------
 
                 #resetto l'array delle temperature, delle umidità e la data di inizio
                 temperature = []
                 umidita = []
                 inizio = time.time()
 
-    except Exception:
-        print(f"Errore con DC")
-        print(f"(Connessione chiusa con {indirizzo}. Numero invii: {invio_numero}")
+    except Exception as e:
+        print(f"Errore con DC: {e}")
+        print(f"(Connessione chiusa con {indirizzo}. Numero invii: {invio_numero})")
 
     finally:
-
         client.close()
 
 #server multithread
@@ -114,3 +129,6 @@ except KeyboardInterrupt:
 
 finally:
     server_socket.close()
+    # Chiusura pulita della connessione MQTT
+    client_mqtt.loop_stop()
+    client_mqtt.disconnect()
