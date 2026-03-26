@@ -7,5 +7,5 @@
   "PORTA_SERVER": 6767,
   "TOPIC": "iotnavi/GIOT-001/misure",
   "BROKER": "broker.hivemq.com",
-  "PORTA_BROCKER": 1883
+  "PORTA_BROKER": 1883
 }
