@@ -2,14 +2,12 @@ import misurazione
 import time
 import json
 import socket
-import cripto # Mantenuto dal tuo codice originale
-import wifidc # NUOVO: Importazione del modulo per il Wi-Fi
+import cripto 
+import wifidc 
 from machine import Pin
 import dht
 import network
 import rp2
-
-# Rimosso: from logging import config (inutile e spesso incompatibile su MicroPython)
 
 CONFIG_FILE = 'configurazionedc.json'
 ADDR_FILE = 'da.json'
@@ -19,16 +17,16 @@ def carica_config(nome_file):
     try:
         with open(nome_file) as file:
             return json.load(file)
-    except OSError: # Manteniamo l'eccezione sicura per MicroPython
+    except OSError: 
         print(f"Errore: file '{nome_file}' non trovato o errore di lettura")
-        raise # Solleviamo l'errore per farlo gestire al blocco try/except nel main()
+        raise 
     except ValueError:
         print(f"Errore: formato JSON non valido in {nome_file}")
         raise
 
 def crea_dato_iot(config, rilevazione, temperatura, umidita):
     """Crea il dizionario con i dati IoT in modo sicuro"""
-    dato = config.copy() # Manteniamo .copy() dal tuo codice originale, è più sicuro!
+    dato = config.copy() 
     dato.pop("cablaggio", None) 
     
     dato["osservazione"] = {
@@ -39,26 +37,24 @@ def crea_dato_iot(config, rilevazione, temperatura, umidita):
     return dato
 
 def main():
-    # --- NUOVO: AVVIO WI-FI (Usando il modulo del prof) ---
+    # --- AVVIO WI-FI ---
     print("Inizializzazione della scheda di rete...")
     rp2.country('IT')
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
     
-    # 1. Carica SSID e Password usando la funzione del prof
-    # ATTENZIONE: devi avere un file chiamato 'wifipico.json' salvato sulla scheda!
+    # Carica SSID e Password
     ssid, pw = wifidc.carica_credenziali('wifipico.json')
     
-    # 2. Imposta il risparmio energetico e prova a connettersi
+    # Imposta il risparmio energetico e prova a connettersi
     wifidc.set_powersaving(wlan, disabilita=True)
     successo = wifidc.connetti_wifi(wlan, ssid, pw)
     
     if not successo:
         print("Errore critico: impossibile collegarsi al router Wi-Fi. Chiusura.")
-        return # Ferma tutto se non c'è internet
+        return 
     # --- FINE AVVIO WI-FI ---
 
-    # --- DA QUI PARTE IL RESTO DEL TUO CODICE ---
     # 1. Caricamento configurazioni DC e DA
     try:
         config = carica_config(CONFIG_FILE)
@@ -70,6 +66,7 @@ def main():
 
     # 2. Inizializzazione Hardware
     led_interno = Pin(15, Pin.OUT)
+    # Assicurati che il pin corrisponda a quello nel file json
     sensore = dht.DHT11(Pin(config["cablaggio"]["segnale"]))
     
     # 3. Setup Socket
@@ -85,7 +82,7 @@ def main():
         rilevazione = 0
         
         while True:
-            # NUOVO: Gestione specifica per saltare il ciclo se il sensore fallisce la lettura
+            # Gestione specifica per saltare il ciclo se il sensore fallisce la lettura
             try:
                 temperatura, umidita = misurazione.lettura_sensore(sensore)
             except OSError as e:
@@ -95,21 +92,21 @@ def main():
             
             rilevazione += 1
             
-            # Preparazione del messaggio usando la tua funzione
+            # Preparazione del messaggio
             dato_iot = crea_dato_iot(config, rilevazione, temperatura, umidita)
             dato_json = json.dumps(dato_iot)
             
-            # Criptazione e invio (Mantenuto dal tuo codice originale)
+            # --- DEBUG: Stampa a schermo dei dati IoT NON CRIPTATI ---
+            print(f"\n[DEBUG] Preparazione Rilevazione #{rilevazione}")
+            print(f"Dato in chiaro inviato a iotgwda.py: {dato_json}")
+            
+            # Criptazione e invio
             dato_criptato = cripto.criptazione(dato_json)
             messaggio = (dato_criptato + '\n').encode()
             
             led_interno.value(1)
             client.send(messaggio)
             led_interno.value(0)
-            
-            # NUOVO: Stampa a schermo dei dati in chiaro per facilitare il debug
-            print(f"Rilevazione #{rilevazione} inviata:")
-            print(dato_json)
             
             time.sleep(tempo_rilevazione)
             
