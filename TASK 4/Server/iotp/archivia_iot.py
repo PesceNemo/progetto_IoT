@@ -6,9 +6,9 @@ import cripto  # Modulo locale per la decriptazione
 # I parametri si assumono dal file iotp.json archiviato nella cartella iotp
 try:
     # CORREZIONE: prima tentava di leggere dbplatform.json
-    with open("iotp.json", "r") as f:
+    with open("../iotp.json", "r") as f:
         config = json.load(f)
-except FileNotFoundError:
+except FileNotFoundError:  
     print("Errore: File iotp.json non trovato! Assicurati di aver rinominato iotp.py in iotp.json.")
     exit(1)
 except json.JSONDecodeError:

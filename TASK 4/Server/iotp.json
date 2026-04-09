@@ -1,5 +1,5 @@
 {
-    "topic": "iotnavi/+misure",
+    "topic": "iotnavi/+/misure",
     "broker":
     {
         "host": "broker.hivemq.com",
