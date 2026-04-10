@@ -3,6 +3,7 @@ import time
 import json
 import socket
 import cripto 
+import random
 
 CONFIG_FILE = 'configurazionedc.json'
 ADDR_FILE = 'da.json'
@@ -40,6 +41,11 @@ def main():
         config = carica_config(CONFIG_FILE)
         indirizzi = carica_config(ADDR_FILE)
         print("Caricamento parametri json eseguito correttamente")
+
+        cabina_assegnata = random.randint(100, 150) # Scegli il range che preferisci
+        config["cabina"] = cabina_assegnata
+        config["identita"] = f"DC{cabina_assegnata}-03"
+        print(f"*** SIMULAZIONE: Sensore assegnato alla CABINA {cabina_assegnata} ***")
     except Exception as err:
         print("Errore durante il caricamento dei parametri: ", err)
         return
