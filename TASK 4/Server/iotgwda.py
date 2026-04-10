@@ -3,7 +3,7 @@ import socket #per la gestione delle socket
 import time #per la gestione del tempo
 import json #per gestire i file json
 import cripto #per la gestione della crittografia
-import threading #per la gestione dei thread
+import threading #per la gestione dei thread (devono potersi connettere piu dc contemporaneamente)
 import paho.mqtt.client as mqtt #per la gestione del protocollo MQTT
 
 #leggo i parametri presenti nel file: parametri.json
@@ -19,11 +19,10 @@ TOPIC = parametri["TOPIC"]
 BROKER = parametri["BROKER"]            
 PORTA_BROKER = parametri["PORTA_BROKER"] 
 
-# --- NUOVO: Configurazione e connessione MQTT ---
-client_mqtt = mqtt.Client()
-client_mqtt.connect(BROKER, PORTA_BROKER)
-client_mqtt.loop_start() # avvia il loop in background per MQTT
-# ------------------------------------------------
+#Configurazione e connessione MQTT (Message Queue Telemetry Transport)
+client_mqtt = mqtt.Client() #creazione del client MQTT
+client_mqtt.connect(BROKER, PORTA_BROKER) #connessione al broker MQTT da parte de client
+client_mqtt.loop_start() #avvia il loop in background per MQTT
 
 #funzione per gestire la connessione con il client 
 def gestione_client(client, indirizzo):
@@ -39,7 +38,7 @@ def gestione_client(client, indirizzo):
     try:
         #finchè la connessione è attiva, ricevo dati
         while True:
-            # --- DEBUG RICHIESTO DAL PROGETTO ---
+            #DEBUG richiesto come da specifiche di progetto
             print("Gateway IoT in attesa di dati") 
             
             #ricevo i dati dal client
@@ -84,12 +83,11 @@ def gestione_client(client, indirizzo):
                 dato_json = json.dumps(dato_iot)
                 dato_cripto = cripto.criptazione(dato_json)
 
-                # --- NUOVO: Invio del dato tramite MQTT (Publish) ---
+                #Invio del dato tramite MQTT (Publisher)
                 client_mqtt.publish(TOPIC, dato_cripto, 0)
                 
-                # --- DEBUG RICHIESTO DAL PROGETTO ---
+                #DEBUG richiesto come da specifiche di progetto
                 print("Gateway IoT in ricezione e invio")
-                # ----------------------------------------------------
 
                 #resetto l'array delle temperature, delle umidità e la data di inizio
                 temperature = []
@@ -129,6 +127,6 @@ except KeyboardInterrupt:
 
 finally:
     server_socket.close()
-    # Chiusura pulita della connessione MQTT
+    #Chiusura della connessione MQTT
     client_mqtt.loop_stop()
     client_mqtt.disconnect()
