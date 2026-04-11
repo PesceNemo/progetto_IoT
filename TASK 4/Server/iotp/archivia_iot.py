@@ -20,7 +20,7 @@ NOME_DB = config["dbfile"]["file"]
 MODO_SCRITTURA = config["dbfile"]["modo"]
 
 def on_connect(client, userdata, flags, rc):
-    # rc (return code) uguale a 0 indica che la connessione al broker ha avuto successo
+    # rc uguale a 0 indica che la connessione al broker ha avuto successo
     if rc == 0:
         print(f"[OK] Connesso al broker {BROKER_HOST}:{BROKER_PORTA}")
         client.subscribe(TOPIC)
@@ -30,7 +30,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     try:
-        # Il payload arriva come flusso di byte, è necessaria la decodifica in stringa UTF-8
+        # Il payload arriva come flusso di byte, è necessaria la decodifica in stringa
         payload_criptato = msg.payload.decode("utf-8")
         
         dati_in_chiaro = cripto.decriptazione(payload_criptato)
