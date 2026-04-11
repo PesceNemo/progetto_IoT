@@ -24,7 +24,7 @@ def carica_config(nome_file):
 
 def crea_dato_iot(config, rilevazione, temperatura, umidita):
     dato = config.copy() 
-    # Rimuove informazioni hardware ("cablaggio") non necessarie nella simulazione PC
+    # Rimuove informazioni hardware non necessarie nella simulazione PC
     dato.pop("cablaggio", None) 
     
     # Costruisce il blocco di rilevazione incapsulando i dati dei sensori
@@ -58,7 +58,7 @@ def main():
         client.connect((indirizzi["IP"], int(indirizzi["porta"])))
         print(f"Connesso al server (DA) {indirizzi['IP']}")
         
-        # Riceve dal server il tempo di attesa (polling) tra una rilevazione e l'altra
+        # Riceve dal server il tempo di attesa tra una rilevazione e l'altra
         tempo_rilevazione = int(client.recv(1024).decode())
         print(f"Intervallo ricevuto: {tempo_rilevazione}s")
         
