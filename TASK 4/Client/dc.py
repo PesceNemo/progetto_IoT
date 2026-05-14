@@ -4,6 +4,7 @@ import json
 import socket
 import cripto 
 import random
+import wifidc
 
 CONFIG_FILE = 'configurazionedc.json'
 ADDR_FILE = 'da.json'
